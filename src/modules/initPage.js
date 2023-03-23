@@ -10,15 +10,10 @@ const initPage = () => {
 	topLabel.textContent = "Projects:";
 	header.appendChild(topLabel);
 
-	const defaultButton = document.createElement("button");
-	defaultButton.className = "default";
-	defaultButton.textContent = "Default Project";
-	header.appendChild(defaultButton);
-
 	const addProjectButton = document.createElement("button");
 	addProjectButton.className = "addProject";
 	addProjectButton.textContent = "+";
-	header.appendChild(addProjectButton);
+	topLabel.appendChild(addProjectButton);
 
 	body.appendChild(header);
 
@@ -33,23 +28,10 @@ const initPage = () => {
 	description.appendChild(descriptionHeader);
 
 	const descriptionParagraph = document.createElement("p");
-	descriptionParagraph.textContent = "Default Description";
+	descriptionParagraph.className = "projectDescription";
 	description.appendChild(descriptionParagraph);
 
 	projectInformation.appendChild(description);
-
-	const dueDate = document.createElement("div");
-	dueDate.className = "dueDate";
-
-	const dueDateHeader = document.createElement("h1");
-	dueDateHeader.textContent = "Due Date";
-	dueDate.appendChild(dueDateHeader);
-
-	const dueDateParagraph = document.createElement("p");
-	dueDateParagraph.textContent = "Default Due Date";
-	dueDate.appendChild(dueDateParagraph);
-
-	projectInformation.appendChild(dueDate);
 
 	const priority = document.createElement("div");
 	priority.className = "priority";
@@ -59,8 +41,7 @@ const initPage = () => {
 	priority.appendChild(priorityHeader);
 
 	const p = document.createElement("div");
-	p.className = "p";
-	p.textContent = "High";
+	p.className = "projectPriority";
 	priority.appendChild(p);
 
 	projectInformation.appendChild(priority);
@@ -86,19 +67,22 @@ const initPage = () => {
 	task.className = "task";
 
 	const task1 = document.createElement("p");
-	task1.textContent = "Default Task 1";
+	task1.className = "taskOne";
+
 	task.appendChild(task1);
 
 	const task2 = document.createElement("p");
-	task2.textContent = "Default Task 2";
+	task2.className = "taskTwo";
+
 	task.appendChild(task2);
 
 	const task3 = document.createElement("p");
-	task3.textContent = "Default Task 3";
+	task3.className = "taskThree";
+
 	task.appendChild(task3);
 
 	const task4 = document.createElement("p");
-	task4.textContent = "Default Task 4";
+	task4.className = "taskFour";
 	task.appendChild(task4);
 
 	taskContainer.appendChild(task);
