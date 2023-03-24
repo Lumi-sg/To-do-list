@@ -35,8 +35,6 @@ const projectInitialization = () => {
 	projectList.push(DEFAULT_PROJECT1);
 	projectList.push(DEFAULT_PROJECT2);
 
-	renderProject(DEFAULT_PROJECT1);
-	renderProject(DEFAULT_PROJECT2);
 	renderButton(DEFAULT_PROJECT1);
 	renderButton(DEFAULT_PROJECT2);
 
@@ -47,27 +45,51 @@ const projectInitialization = () => {
 		projectButton.textContent = project.title;
 
 		header.appendChild(projectButton);
+
+		projectButton.addEventListener("click", () => {
+			changeCurrentProject(projectButton);
+		});
 	}
-	function renderProject(project) {
-		console.table(project);
 
-		const projectDescription = document.querySelector(".projectDescription");
-		projectDescription.textContent = project.description;
+	function changeCurrentProject(button) {
+		const buttons = document.querySelectorAll("button");
 
-		const projectPriority = document.querySelector(".projectPriority");
-		projectPriority.textContent = project.priority;
+		buttons.forEach((button) => {
+			button.classList.remove("button-selected");
+		});
 
-		const taskOne = document.querySelector(".taskOne");
-		taskOne.textContent = "•  " + project.taskOne;
+		button.classList.add("button-selected");
+		updateProjectText();
+	}
 
-		const taskTwo = document.querySelector(".taskTwo");
-		taskTwo.textContent = "• " + project.taskTwo;
+	function updateProjectText() {
+		const buttons = document.querySelectorAll("button");
 
-		const taskThree = document.querySelector(".taskThree");
-		taskThree.textContent = "• " + project.taskThree;
+		buttons.forEach((button) => {
+			if (button.classList.contains("button-selected")) {
+				let currentProject = button.innerText;
 
-		const taskFour = document.querySelector(".taskFour");
-		taskFour.textContent = "• " + project.taskFour;
+				const index = projectList.findIndex((project) => project.title === currentProject);
+
+				const projectDescription = document.querySelector(".projectDescription");
+				projectDescription.textContent = projectList[index].description;
+
+				const projectPriority = document.querySelector(".projectPriority");
+				projectPriority.textContent = projectList[index].priority;
+
+				const taskOne = document.querySelector(".taskOne");
+				taskOne.textContent = "•  " + projectList[index].taskOne;
+
+				const taskTwo = document.querySelector(".taskTwo");
+				taskTwo.textContent = "• " + projectList[index].taskTwo;
+
+				const taskThree = document.querySelector(".taskThree");
+				taskThree.textContent = "• " + projectList[index].taskThree;
+
+				const taskFour = document.querySelector(".taskFour");
+				taskFour.textContent = "• " + projectList[index].taskFour;
+			}
+		});
 	}
 };
 

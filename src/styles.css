@@ -59,3 +59,7 @@ button:hover {
 	transform: scale(1.1);
 	transition: 100ms;
 }
+
+.button-selected {
+	background-color: rgb(93, 230, 93);
+}
