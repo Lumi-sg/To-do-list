@@ -44,11 +44,11 @@ const projectInitialization = () => {
 	const submitProjectButton = document.querySelector(".addTodoToArray");
 
 	submitProjectButton.addEventListener("click", () => {
-		submitProject();
-		// modal.style.display = "none";
+		submitNewProject();
+		modal.style.display = "none";
 	});
 
-	function submitProject() {
+	function submitNewProject() {
 		const title = document.querySelector("#projectName");
 		const description = document.querySelector("#description");
 		const priority = document.querySelector("#priority");
@@ -68,7 +68,6 @@ const projectInitialization = () => {
 		);
 
 		projectList.push(project);
-		console.table(projectList);
 		renderButton(project);
 
 		clearForm();
@@ -88,6 +87,7 @@ const projectInitialization = () => {
 		projectButton.textContent = project.title;
 
 		header.appendChild(projectButton);
+		changeCurrentProject(projectButton);
 
 		projectButton.addEventListener("click", () => {
 			changeCurrentProject(projectButton);
