@@ -1,6 +1,9 @@
 const initPage = () => {
 	// Create the HTML elements using JavaScript
 	const body = document.querySelector("body");
+	const modal = document.querySelector(".modal");
+
+	modal.style.display = "none";
 
 	const header = document.createElement("div");
 	header.className = "header";
@@ -14,6 +17,11 @@ const initPage = () => {
 	addProjectButton.className = "addProject";
 	addProjectButton.textContent = "+";
 	topLabel.appendChild(addProjectButton);
+
+	addProjectButton.addEventListener("click", () => {
+		modal.style.display = "block";
+	});
+
 
 	body.appendChild(header);
 

@@ -38,6 +38,49 @@ const projectInitialization = () => {
 	renderButton(DEFAULT_PROJECT1);
 	renderButton(DEFAULT_PROJECT2);
 
+	console.table(projectList);
+
+	const modal = document.querySelector(".modal");
+	const submitProjectButton = document.querySelector(".addTodoToArray");
+
+	submitProjectButton.addEventListener("click", () => {
+		submitProject();
+		// modal.style.display = "none";
+	});
+
+	function submitProject() {
+		const title = document.querySelector("#projectName");
+		const description = document.querySelector("#description");
+		const priority = document.querySelector("#priority");
+		const task1 = document.querySelector("#task1");
+		const task2 = document.querySelector("#task2");
+		const task3 = document.querySelector("#task3");
+		const task4 = document.querySelector("#task4");
+
+		const project = new Project(
+			title.value,
+			description.value,
+			priority.value,
+			task1.value,
+			task2.value,
+			task3.value,
+			task4.value
+		);
+
+		projectList.push(project);
+		console.table(projectList);
+		renderButton(project);
+
+		clearForm();
+
+		function clearForm() {
+			const inputs = document.querySelectorAll("input");
+			inputs.forEach((input) => {
+				input.value = "";
+			});
+		}
+	}
+
 	function renderButton(project) {
 		const header = document.querySelector(".header");
 		const projectButton = document.createElement("button");
