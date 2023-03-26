@@ -1,3 +1,5 @@
+import { dataValidation } from "./validate.js";
+
 const projectInitialization = () => {
 	class Project {
 		constructor(title, description, priority, taskOne, taskTwo, taskThree, taskFour) {
@@ -45,32 +47,35 @@ const projectInitialization = () => {
 
 	submitProjectButton.addEventListener("click", () => {
 		submitNewProject();
-		modal.style.display = "none";
+		// modal.style.display = "none";
 	});
 
 	function submitNewProject() {
-		const title = document.querySelector("#projectName");
-		const description = document.querySelector("#description");
-		const priority = document.querySelector("#priority");
-		const task1 = document.querySelector("#task1");
-		const task2 = document.querySelector("#task2");
-		const task3 = document.querySelector("#task3");
-		const task4 = document.querySelector("#task4");
+		if (dataValidation()) {
+			const title = document.querySelector("#projectName");
+			const description = document.querySelector("#description");
+			const priority = document.querySelector("#priority");
+			const task1 = document.querySelector("#task1");
+			const task2 = document.querySelector("#task2");
+			const task3 = document.querySelector("#task3");
+			const task4 = document.querySelector("#task4");
 
-		const project = new Project(
-			title.value,
-			description.value,
-			priority.value,
-			task1.value,
-			task2.value,
-			task3.value,
-			task4.value
-		);
+			const project = new Project(
+				title.value,
+				description.value,
+				priority.value,
+				task1.value,
+				task2.value,
+				task3.value,
+				task4.value
+			);
 
-		projectList.push(project);
-		renderButton(project);
+			projectList.push(project);
+			renderButton(project);
 
-		clearForm();
+			clearForm();
+			modal.style.display = "none";
+		}
 
 		function clearForm() {
 			const inputs = document.querySelectorAll("input");

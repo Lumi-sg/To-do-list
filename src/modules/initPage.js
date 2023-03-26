@@ -1,6 +1,11 @@
 const initPage = () => {
 	// Create the HTML elements using JavaScript
 	const body = document.querySelector("body");
+
+	const pageContainer = document.createElement("div");
+	pageContainer.className = "pageContainer";
+	body.appendChild(pageContainer);
+
 	const modal = document.querySelector(".modal");
 
 	modal.style.display = "none";
@@ -18,12 +23,7 @@ const initPage = () => {
 	addProjectButton.textContent = "+";
 	topLabel.appendChild(addProjectButton);
 
-	addProjectButton.addEventListener("click", () => {
-		modal.style.display = "block";
-	});
-
-
-	body.appendChild(header);
+	pageContainer.appendChild(header);
 
 	const projectInformation = document.createElement("div");
 	projectInformation.className = "projectInformation";
@@ -54,7 +54,7 @@ const initPage = () => {
 
 	projectInformation.appendChild(priority);
 
-	body.appendChild(projectInformation);
+	pageContainer.appendChild(projectInformation);
 
 	const tasks = document.createElement("div");
 	tasks.className = "Tasks";
@@ -96,6 +96,18 @@ const initPage = () => {
 	taskContainer.appendChild(task);
 	tasks.appendChild(taskContainer);
 
-	body.appendChild(tasks);
+	pageContainer.appendChild(tasks);
+
+	addProjectButton.addEventListener("click", () => {
+		pageContainer.classList.add("modalIsOpen");
+		modal.style.display = "block";
+	});
+
+	const modalSpan = document.getElementsByClassName("close")[0];
+
+	modalSpan.addEventListener("click", () => {
+		modal.style.display = "none";
+		pageContainer.classList.remove("modalIsOpen");
+	});
 };
 export { initPage };
