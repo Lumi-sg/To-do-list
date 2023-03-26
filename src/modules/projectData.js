@@ -45,6 +45,7 @@ const projectInitialization = () => {
 	const pageContainer = document.querySelector(".pageContainer");
 	const modal = document.querySelector(".modal");
 	const submitProjectButton = document.querySelector(".addTodoToArray");
+	const removeProjectButton = document.querySelector(".deleteProject");
 
 	const title = document.querySelector("#projectName");
 	const description = document.querySelector("#description");
@@ -56,7 +57,10 @@ const projectInitialization = () => {
 
 	submitProjectButton.addEventListener("click", () => {
 		submitNewProject();
-		// modal.style.display = "none";
+	});
+
+	removeProjectButton.addEventListener("click", () => {
+		removeProject();
 	});
 
 	function submitNewProject() {
@@ -64,7 +68,7 @@ const projectInitialization = () => {
 			const project = new Project(
 				title.value,
 				description.value,
-				priority.value,
+				priority.value.charAt(0).toUpperCase() + priority.value.slice(1),
 				task1.value,
 				task2.value,
 				task3.value,
@@ -77,6 +81,7 @@ const projectInitialization = () => {
 			clearForm();
 			pageContainer.classList.remove("modalIsOpen");
 			modal.style.display = "none";
+			console.table(projectList);
 		}
 
 		function clearForm() {
@@ -85,6 +90,39 @@ const projectInitialization = () => {
 				input.value = "";
 			});
 		}
+	}
+
+	function removeProject() {
+		const buttons = document.querySelectorAll("button");
+
+		buttons.forEach((button) => {
+			if (button.classList.contains("button-selected")) {
+				button.remove();
+				let currentProject = button.innerText;
+
+				const index = projectList.findIndex((project) => project.title === currentProject);
+
+				projectList.splice(index, 1);
+
+				const projectDescription = document.querySelector(".projectDescription");
+				projectDescription.textContent = "";
+
+				const projectPriority = document.querySelector(".projectPriority");
+				projectPriority.textContent = "";
+
+				const taskOne = document.querySelector(".taskOne");
+				taskOne.textContent = "";
+
+				const taskTwo = document.querySelector(".taskTwo");
+				taskTwo.textContent = "";
+
+				const taskThree = document.querySelector(".taskThree");
+				taskThree.textContent = "";
+
+				const taskFour = document.querySelector(".taskFour");
+				taskFour.textContent = "";
+			}
+		});
 	}
 
 	function renderButton(project) {

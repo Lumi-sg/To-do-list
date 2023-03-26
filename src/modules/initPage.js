@@ -109,5 +109,14 @@ const initPage = () => {
 		modal.style.display = "none";
 		pageContainer.classList.remove("modalIsOpen");
 	});
+
+	const botPage = document.createElement("div");
+	botPage.classList.add("botPage");
+	
+	const deleteButton = document.createElement("button");
+	deleteButton.className = "deleteProject";
+	deleteButton.textContent = "-";
+	pageContainer.appendChild(botPage);
+	botPage.appendChild(deleteButton);
 };
 export { initPage };

@@ -20,7 +20,8 @@ h1 {
 	align-items: center;
 }
 
-.addProject {
+.addProject,
+.deleteProject {
 	border-radius: 50%;
 	height: 8vh;
 	width: 8vh;
@@ -38,6 +39,12 @@ h1 {
 	transform: scale(1.05);
 	transition: 100ms;
 	border: green 3px solid;
+}
+
+.deleteProject:hover {
+	transform: scale(1.05);
+	transition: 100ms;
+	border: rgb(255, 0, 0) 3px solid;
 }
 
 button {
@@ -109,4 +116,9 @@ body {
 input[type="text"] {
 	width: 15rem; /* Increase the width */
 	height: 1rem; /* Increase the height */
+}
+
+.botPage {
+	display: flex;
+	justify-content: flex-end;
 }
