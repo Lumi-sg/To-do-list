@@ -42,8 +42,17 @@ const projectInitialization = () => {
 
 	console.table(projectList);
 
+	const pageContainer = document.querySelector(".pageContainer");
 	const modal = document.querySelector(".modal");
 	const submitProjectButton = document.querySelector(".addTodoToArray");
+
+	const title = document.querySelector("#projectName");
+	const description = document.querySelector("#description");
+	const priority = document.querySelector("#priority");
+	const task1 = document.querySelector("#task1");
+	const task2 = document.querySelector("#task2");
+	const task3 = document.querySelector("#task3");
+	const task4 = document.querySelector("#task4");
 
 	submitProjectButton.addEventListener("click", () => {
 		submitNewProject();
@@ -51,15 +60,7 @@ const projectInitialization = () => {
 	});
 
 	function submitNewProject() {
-		if (dataValidation()) {
-			const title = document.querySelector("#projectName");
-			const description = document.querySelector("#description");
-			const priority = document.querySelector("#priority");
-			const task1 = document.querySelector("#task1");
-			const task2 = document.querySelector("#task2");
-			const task3 = document.querySelector("#task3");
-			const task4 = document.querySelector("#task4");
-
+		if (dataValidation(title, description, task1, task2, task3, task4)) {
 			const project = new Project(
 				title.value,
 				description.value,
@@ -74,6 +75,7 @@ const projectInitialization = () => {
 			renderButton(project);
 
 			clearForm();
+			pageContainer.classList.remove("modalIsOpen");
 			modal.style.display = "none";
 		}
 
