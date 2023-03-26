@@ -19,35 +19,38 @@
 				<span class="close">&times;</span>
 				<div class="modalEntryDiv">
 					<form action="" id="todoForm">
-						<h3 class="modalTopText">Add a Todo</h3>
-						<label for="projectName">Project Name</label>
+						<label for="projectName">Project Name</label><br><br>
 						<input
 							type="text"
 							id="projectName"
 							name="projectName"
 							placeholder="Project Name"
 							required
-						/>
-						<label for="description">Description</label>
+							minlength="1"
+							maxlength="30"
+						/><br><br>
+						<label for="description">Description</label><br><br>
 						<input type = "text"
 							id="description"
 							name="description"
 							placeholder="Description"
-						></input>
-						<label for="priority">Priority</label>
+							minlength="1"
+							maxlength="280"
+						></input><br><br>
+						<label for="priority">Priority</label><br><br>
 						<select id="priority" name="priority">
 							<option value="high">High</option>
 							<option value="medium">Medium</option>
 							<option value="low">Low</option>
-						</select>
-						<label for="task1">Task 1</label>
-						<input type="text" id="task1" name="task1" placeholder="Task 1" />
-						<label for="task2">Task 2</label>
-						<input type="text" id="task2" name="task2" placeholder="Task 2" />
-						<label for="task3">Task 3</label>
-						<input type="text" id="task3" name="task3" placeholder="Task 3" />
-						<label for="task4">Task 4</label>
-						<input type="text" id="task4" name="task4" placeholder="Task 4" />
+						</select><br><br>
+						<label for="task1">Task 1</label><br><br>
+						<input type="text" id="task1" name="task1" placeholder="Task 1" minlength="1" maxlength="280" /><br><br>
+						<label for="task2">Task 2</label><br><br>
+						<input type="text" id="task2" name="task2" placeholder="Task 2" maxlength="280"/><br><br>
+						<label for="task3">Task 3</label><br><br>
+						<input type="text" id="task3" name="task3" placeholder="Task 3" maxlength="280"/><br><br>
+						<label for="task4">Task 4</label><br><br>
+						<input type="text" id="task4" name="task4" placeholder="Task 4" maxlength="280"/><br><br>
 						<div class="modal-alert-box"></div>
 						<button type="button" class="addTodoToArray">Add Todo</button>
 					</form>
